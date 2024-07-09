@@ -4,7 +4,7 @@ public class RedondearNumero {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Digite un número: ");
+        System.out.print("Digite un número decimal: ");
         double numero = sc.nextDouble();
 
         double numeroRedondeado = redondearNumero(numero);

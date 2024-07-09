@@ -4,7 +4,7 @@ public class calcularValorAbsoluto {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Digite um número: ");
+        System.out.print("Digite um número: ");
         int numero = sc.nextInt();
 
         int valorAbsoluto = valorAbsoluto(numero);
