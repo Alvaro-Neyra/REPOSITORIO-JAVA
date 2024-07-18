@@ -21,5 +21,6 @@ public class VerificarCadena {
         } else {
             System.out.println("La cadena ingresada no contiene solo letras");
         }
+        sc.close();
     }
 }
