@@ -42,7 +42,7 @@ public class DibujarGraficoDeBarras {
 
     public static void dibujarGraficoDeBarras(int[] valores) {
         for (int i = 0; i < valores.length; i++) {
-            System.out.print(valores[i]);
+            System.out.print(valores[i] + " ");
             dibujarLinea(valores[i]);
         }
         System.out.println();
