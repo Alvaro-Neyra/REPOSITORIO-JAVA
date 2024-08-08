@@ -6,6 +6,7 @@ public class TablaDeMultplicar2 {
     public static void main(String[] args) {
         int[] numeros = pedirNumeros();
         imprimirTablasDeMultiplicar(numeros);
+        sc.close();
     }
 
     public static int[] pedirNumeros() {

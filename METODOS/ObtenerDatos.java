@@ -9,6 +9,7 @@ public class ObtenerDatos {
         String nombre = obtenerNombre();
         int edad = obtenerEdad();
         imprimirNombreYEdad(nombre, edad);
+        sc.close();
     }
 
     public static void imprimirNombre(String nombre) {

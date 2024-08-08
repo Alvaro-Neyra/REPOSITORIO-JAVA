@@ -46,6 +46,7 @@ public class PracticaInicial {
             }
         } while (error);
         imprimirNombreYEdad(nombre, edad);
+        sc.close();
     }
 
     public static void imprimirNombre(String nombre) {
