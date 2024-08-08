@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TablaDeMultiplicar {
@@ -9,8 +10,24 @@ public class TablaDeMultiplicar {
     }
 
     public static int pedirNumero() {
-        System.out.print("Ingrese un número para imprimir la tabla de multiplicar: ");
-        return sc.nextInt();
+        boolean error = false;
+        int numero = 0;
+        do {
+            error = false;
+            try {
+                System.out.print("Ingrese un número para imprimir la tabla de multiplicar: ");
+                numero = sc.nextInt();
+            } catch(InputMismatchException e) {
+                System.out.println("Error: Debes ingresar un número entero");
+                error = true;
+                sc.nextLine();
+            } catch(Exception e) {
+                System.out.println("Error: " + e.getMessage());
+                error = true;
+                sc.nextLine();
+            }
+        } while (error);
+        return numero;
     }
 
     public static void imprimirTablaDeMultiplicar(int numero) {

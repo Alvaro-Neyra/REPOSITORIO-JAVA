@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ObtenerDatos {
@@ -20,13 +21,52 @@ public class ObtenerDatos {
         System.out.println();
     }
 
-    public static String obtenerNombre () {
-        System.out.print("Ingrese su nombre: ");
-        return sc.nextLine();
+    public static String obtenerNombre() {
+        String nombre;
+        do {
+            System.out.print("Ingrese su nombre: ");
+            nombre = sc.nextLine();
+
+            if (nombre.isEmpty()) {
+                System.out.println("El nombre no puede estar vacío!");
+            }
+
+            if (!verificarCadenaSoloConLetras(nombre)) {
+                System.out.println("El nombre solo puede contener letras!");
+            }
+            
+        } while (nombre.isEmpty() || !verificarCadenaSoloConLetras(nombre));
+        return nombre;
     }
 
-    public static int obtenerEdad () {
-        System.out.print("Ingrese su edad: ");
-        return sc.nextInt();
+    public static int obtenerEdad() {
+        boolean error = false;
+        int edad = 0;
+
+        do {
+            error = false;
+            try {
+                do {
+                    System.out.print("Ingrese su edad: ");
+                    edad = sc.nextInt();
+                    if (edad < 0) {
+                        System.out.println("La edad no puede ser negativa!");
+                    }
+                } while (edad < 0);
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Debes ingresar un número entero");
+                error = true;
+                sc.nextLine();
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+                error = true;
+                sc.nextLine();
+            }
+        } while (error);
+        return edad;
+    }
+
+    public static boolean verificarCadenaSoloConLetras(String cadena) {
+        return cadena.matches("[a-zA-Z]+");
     }
 }
