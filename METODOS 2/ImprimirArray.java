@@ -62,6 +62,7 @@ public class ImprimirArray {
                     break;
             }
         } while (opcion != 5);
+        sc.close();
     }
 
     public static void imprimirArray(int[] array) {
