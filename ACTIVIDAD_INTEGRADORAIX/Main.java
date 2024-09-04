@@ -4,6 +4,7 @@ import modelos.Cliente;
 import modelos.Producto;
 import modelos.ProductoElectronico;
 import modelos.ProductoRopa;
+import java.util.ArrayList;
 
 public class Main {
     public static Scanner sc = new Scanner(System.in);
@@ -68,28 +69,56 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Ingresa el nombre del producto a eliminar");
-                    String nombreProducto = sc.next();
+                    String nombreProducto = sc.nextLine();
+                    boolean eliminado = false;
+                    ArrayList<Producto> productosAEliminar = new ArrayList<Producto>();
                     for (Producto producto : cliente.getProductosComprados()) {
-                        if (producto.getNombre().equalsIgnoreCase(nombreProducto)) {
+                        if (producto.getNombre().equals(nombreProducto)) {
+                            productosAEliminar.add(producto);
+                            eliminado = true;
+                        }
+                    }
+                    if (eliminado) {
+                        for (Producto producto : productosAEliminar) {
                             try {
                                 cliente.quitarProducto(producto);
                             } catch (Exception e) {
                                 System.out.println("Error: " + e.getMessage());
                             }
                         }
+                    } else {
+                        System.out.println("Error: No se encontró el producto");
                     }
                     break;
                 case 3:
                     System.out.println("Productos comprados por " + cliente.getNombre());
-                    for (Producto producto : cliente.getProductosComprados()) {
-                        System.out.println(producto.getNombre());
+                    for (int i = 0; i < cliente.getProductosComprados().size(); i++) {
+                        System.out.println(i + 1 + ". " + cliente.getProductosComprados().get(i).getNombre());
+                        System.out.println(cliente.getProductosComprados().get(i).toString());
                     }
                     break;
                 case 4:
+                    double total = 0.00;
+                    double descuento = 0.00;
+                    if (cliente.getProductosComprados().size() > 5) {
+                        descuento = 0.10;
+                    } else if (cliente.getProductosComprados().size() > 10) {
+                        descuento = 0.15;
+                    } else {
+                        descuento = 0.00;
+                    }
                     System.out.println("Compra realizada por " + cliente.getNombre());
                     for (Producto producto : cliente.getProductosComprados()) {
-                        System.out.println(producto.getNombre());
+                        double precioTotalDelProducto = producto.getPrecio() * producto.getCantidad();
+                        double precioConDescuento = producto.calcularPrecio(precioTotalDelProducto, descuento);
+                        System.out.println("Producto: " + producto.getNombre());
+                        System.out.println("Precio: " + producto.getPrecio());
+                        System.out.println("Cantidad: " + producto.getCantidad());
+                        System.out.println("Precio total: " + precioTotalDelProducto);
+                        System.out.println("Precio con descuento: " + precioConDescuento);
+                        total += precioConDescuento;
                     }
+                    System.out.println("Total pagado: " + total);
                     break;
             }
         } while (opcion != 5);

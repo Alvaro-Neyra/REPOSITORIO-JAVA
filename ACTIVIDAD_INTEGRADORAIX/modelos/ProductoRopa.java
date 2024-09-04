@@ -31,4 +31,7 @@ public class ProductoRopa extends Producto{
     public void setMaterial(String material) {
         this.material = material;
     }
+    public String toString() {
+        return "Nombre: " + this.getNombre() + "\nPrecio: " + this.getPrecio() + "\nCantidad: " + this.getCantidad() + "\nDescripción: " + this.getDescripcion() + "\nTalla: " + this.talla + "\nColor: " + this.color + "\nMaterial: " + this.material;
+    }
 }

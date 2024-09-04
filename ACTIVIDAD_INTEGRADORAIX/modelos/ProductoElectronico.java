@@ -31,4 +31,7 @@ public class ProductoElectronico extends Producto{
     public void setNumeroSerie(String numeroSerie) {
         this.numeroSerie = numeroSerie;
     }
+    public String toString() {
+        return "Nombre: " + this.getNombre() + "\nPrecio: " + this.getPrecio() + "\nCantidad: " + this.getCantidad() + "\nDescripción: " + this.getDescripcion() + "\nMarca: " + this.marca + "\nModelo: " + this.modelo + "\nNúmero de serie: " + this.numeroSerie;
+    }
 }
